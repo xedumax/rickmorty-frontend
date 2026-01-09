@@ -1,3 +1,32 @@
+Rick and Morty - Proyecto Frontend Angular
+Proyecto frontend desarrollado en Angular que consume una API REST de Rick and Morty para mostrar información de personajes.
+📋 Características Implementadas
+✅ Requisitos Cumplidos
+
+Modelado de Datos: Interfaces TypeScript que replican los modelos del backend
+Vista Principal: Lista de personajes con paginación y diseño responsivo
+Búsqueda Individual: Búsqueda por nombre o ID con descarga en PDF
+Página 404: Página personalizada para rutas no encontradas
+Diseño Responsivo: Compatible con dispositivos móviles y desktop
+Gestión de Errores: Manejo de errores con mensajes claros y opciones de reintento
+Testing: Pruebas unitarias con Jasmine y Karma
+
+🚀 Tecnologías Utilizadas
+
+Angular 15+
+TypeScript
+RxJS
+HttpClient
+jsPDF (generación de PDFs)
+Jasmine & Karma (testing)
+
+📦 Instalación
+Prerequisitos
+
+Node.js (v14 o superior)
+npm (v6 o superior)
+Angular CLI (npm install -g @angular/cli)
+
 # RickmortyFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
