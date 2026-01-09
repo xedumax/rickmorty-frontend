@@ -1,0 +1,79 @@
+<div class="search-container">
+  <div class="nav-buttons">
+    <a routerLink="/" class="btn-nav">← Volver a la lista</a>
+  </div>
+
+  <h1>Buscar Personaje</h1>
+
+  <div class="search-box">
+    <div class="search-type">
+      <label>
+        <input type="radio" name="searchType" value="name" [(ngModel)]="searchType">
+        Por Nombre
+      </label>
+      <label>
+        <input type="radio" name="searchType" value="id" [(ngModel)]="searchType">
+        Por ID
+      </label>
+    </div>
+    
+    <div class="search-input-group">
+      <input 
+        type="text" 
+        [(ngModel)]="searchTerm" 
+        [placeholder]="searchType === 'name' ? 'Nombre del personaje...' : 'ID del personaje...'"
+        (keyup.enter)="search()"
+        class="search-input">
+      <button (click)="search()" class="btn-search">Buscar</button>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Buscando...</p>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="character && !loading" class="character-detail">
+    <div class="character-card-detail">
+      <img [src]="character.image" [alt]="character.name" class="character-image-large">
+      <div class="character-info-detail">
+        <h2>{{ character.name }}</h2>
+        <div class="status-badge">
+          <span class="status-indicator" [style.background-color]="getStatusColor(character.status)"></span>
+          {{ character.status }} - {{ character.species }}
+        </div>
+        
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="label">ID:</span>
+            <span class="value">{{ character.id }}</span>
+          </div>
+          <div class="info-item">
+            <span class="label">Género:</span>
+            <span class="value">{{ character.gender }}</span>
+          </div>
+          <div class="info-item" *ngIf="character.type">
+            <span class="label">Tipo:</span>
+            <span class="value">{{ character.type }}</span>
+          </div>
+          <div class="info-item">
+            <span class="label">Origen:</span>
+            <span class="value">{{ character.origin.name }}</span>
+          </div>
+          <div class="info-item">
+            <span class="label">Ubicación:</span>
+            <span class="value">{{ character.location.name }}</span>
+          </div>
+        </div>
+
+        <button (click)="downloadPDF()" class="btn-download">
+          📄 Descargar PDF
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
